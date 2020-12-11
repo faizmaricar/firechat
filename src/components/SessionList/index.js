@@ -8,23 +8,21 @@ import SessionItem from "../SessionItem"
 import styles from "./styles"
 import { database } from "../../firebase"
 
-const SessionList = () => {
+const SessionList = props => {
+  const { sessions, selectedSession, setSelectedSession } = props
   const { sessionsList } = styles()
-  const [sessions, setSessions] = React.useState({})
-  const [selectedSession, setSelectedSession] = React.useState(null)
 
-  React.useEffect(() => {
-    database
-      .ref("/sessions")
-      .on("value", snapshot => setSessions(snapshot.val()))
-  }, [])
-
+  const handleDelete = sessionId => {
+    setSelectedSession(null)
+    database.ref(`/sessions/${sessionId}`).remove()
+  }
   return (
     <List className={sessionsList}>
       {sessions &&
         Object.keys(sessions).map(sessionKey => (
           <SessionItem
             onClickItem={() => setSelectedSession(sessionKey)}
+            onDelete={() => handleDelete(sessionKey)}
             selected={selectedSession === sessionKey}
             sessionId={sessionKey}
             label={sessions[sessionKey].name}

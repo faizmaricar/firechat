@@ -1,10 +1,9 @@
 import React from "react"
 import { Toolbar, Avatar, InputBase, IconButton } from "@material-ui/core"
 import { Person, Add } from "@material-ui/icons"
-import { navigate } from "gatsby"
 
 import styles from "./styles"
-import { auth, database } from "../../firebase"
+import { database } from "../../firebase"
 
 const SessionsHeader = () => {
   const { firstToolbar, input } = styles()
