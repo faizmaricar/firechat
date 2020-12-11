@@ -1,5 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 export default makeStyles(theme => ({
-  sessionsContainer: {},
+  sessionsList: {
+    height: "100%",
+    padding: 0,
+  },
 }))

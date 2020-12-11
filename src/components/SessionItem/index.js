@@ -14,15 +14,22 @@ import styles from "./styles"
 
 import { database } from "../../firebase"
 
-const SessionItem = ({ sessionId, label, lastMessage }) => {
-  const { itemIcon } = styles()
+const SessionItem = props => {
+  const { sessionId, label, lastMessage, selected, onClickItem } = props
+  const { itemContainer, itemIcon } = styles()
+
   const handleDelete = () => {
     database.ref(`/sessions/${sessionId}`).remove()
   }
+
   return (
     <>
-      <ListItem className={itemIcon}>
-        <ListItemAvatar>
+      <ListItem
+        className={itemContainer}
+        onClick={onClickItem}
+        selected={selected}
+      >
+        <ListItemAvatar className={itemIcon}>
           <Avatar>{label[0].toUpperCase()}</Avatar>
         </ListItemAvatar>
         <ListItemText primary={label} secondary={lastMessage} />

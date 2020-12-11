@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 export default makeStyles(theme => ({
-  sessionsContainer: {},
+  title: {
+    flexGrow: 1,
+  },
 }))
