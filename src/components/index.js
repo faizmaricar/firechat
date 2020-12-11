@@ -1,4 +1,4 @@
-import Layout from './Layout';
-import Login from './Login';
+import Layout from "./Layout"
+import Login from "./Login"
 
-export { Layout, Login };
+export { Layout, Login }

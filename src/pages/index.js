@@ -1,19 +1,17 @@
 import React from "react"
-import { navigate } from 'gatsby';
+import { navigate } from "gatsby"
 
-import { Layout, Login } from '../components';
-import { auth } from '../firebase';
+import { Layout } from "../components"
+import { auth } from "../firebase"
 
 const IndexPage = () => {
   React.useEffect(() => {
-    auth.onAuthStateChanged((user) => user &&  navigate('/chat', { replace: true }))
-  }, []);
-  
-  return (
-    <Layout>
-      <Login/>
-    </Layout>
-  )
+    auth.onAuthStateChanged(user =>
+      navigate(user ? "/chat" : "/login", { replace: true })
+    )
+  }, [])
+
+  return <Layout />
 }
 
 export default IndexPage
