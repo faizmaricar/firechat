@@ -13,12 +13,17 @@ export default makeStyles(theme => ({
   },
   sessionsContainer: {
     flexGrow: 1,
+    overflowY: "scroll",
     borderRight: `1px solid ${theme.palette.grey[400]}`,
+    borderBottom: `1px solid ${theme.palette.grey[400]}`,
   },
   chatContainer: {
     flexGrow: 1,
     display: "flex",
     flexDirection: "column",
+  },
+  inputContainer: {
+    border: `1px solid ${theme.palette.grey[400]}`,
   },
   input: {
     flexGrow: 1,

@@ -3,7 +3,7 @@ import { Toolbar, Avatar, InputBase, IconButton } from "@material-ui/core"
 import { Person, Add } from "@material-ui/icons"
 
 import styles from "./styles"
-import { database } from "../../firebase"
+import { Session } from "../../firebase/utils"
 
 const SessionsHeader = () => {
   const { firstToolbar, input } = styles()
@@ -11,8 +11,12 @@ const SessionsHeader = () => {
   const [newSession, setNewSession] = React.useState("")
 
   const handleChange = ({ target: { value } }) => setNewSession(value)
-  const handleClick = () =>
-    newSession && database.ref("/sessions").push({ name: newSession })
+  const handleClick = () => {
+    if (newSession) {
+      const session = new Session(newSession)
+      session.createSession()
+    }
+  }
 
   return (
     <Toolbar className={firstToolbar}>
