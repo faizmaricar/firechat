@@ -4,7 +4,7 @@ import styles from "./styles"
 import Message from "../Message"
 import { getAllMessagesBySession } from "../../firebase/utils"
 
-const ChatMessages = ({ selectedSession }) => {
+const ChatMessages = ({ selectedSession, user }) => {
   const { messagesContainer } = styles()
   const [messages, setMessages] = React.useState([])
 
@@ -21,7 +21,11 @@ const ChatMessages = ({ selectedSession }) => {
   return (
     <div className={messagesContainer}>
       {messages.map(message => (
-        <Message from={message.sentBy} message={message.messageText} />
+        <Message
+          from={message.sentBy}
+          message={message.messageText}
+          sent={user === message.sentBy}
+        />
       ))}
     </div>
   )

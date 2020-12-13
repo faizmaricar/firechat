@@ -2,7 +2,6 @@ import React from "react"
 import { Toolbar, InputBase, Button } from "@material-ui/core"
 
 import styles from "./styles"
-import { auth } from "../../firebase"
 import { Message } from "../../firebase/utils"
 
 const ChatInput = ({ selectedSession, user }) => {

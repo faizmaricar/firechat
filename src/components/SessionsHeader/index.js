@@ -15,6 +15,7 @@ const SessionsHeader = () => {
     if (newSession) {
       const session = new Session(newSession)
       session.createSession()
+      setNewSession("")
     }
   }
 
