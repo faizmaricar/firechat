@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 export default makeStyles(theme => ({
+  "@global": {
+    "*::-webkit-scrollbar": {
+      width: 0,
+      background: "transparent",
+    },
+  },
   root: {
     display: "flex",
     flexDirection: "column",

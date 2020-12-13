@@ -6,7 +6,7 @@ import "normalize.css"
 import SessionItem from "../SessionItem"
 
 import styles from "./styles"
-import { database } from "../../firebase"
+import { deleteSessionById } from "../../firebase/utils"
 
 const SessionList = props => {
   const { sessions, selectedSession, setSelectedSession } = props
@@ -14,8 +14,9 @@ const SessionList = props => {
 
   const handleDelete = sessionId => {
     setSelectedSession(null)
-    database.ref(`/sessions/${sessionId}`).remove()
+    deleteSessionById(sessionId)
   }
+
   return (
     <List className={sessionsList}>
       {sessions &&
